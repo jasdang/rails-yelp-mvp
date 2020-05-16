@@ -2,3 +2,4 @@
 <% @restaurants.each do |restaurant| %>
   <p><%= link_to "#{restaurant.name.capitalize}", restaurant_path(restaurant) %></p>
 <% end %>
+<%= link_to "Add a new restaurant", new_restaurant_path %>
