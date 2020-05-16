@@ -23,7 +23,7 @@ restaurant_count = 1
 
   review_count = 1
   3.times do
-    review = Review.new(content: "This restaurant is #{%w[good bad awesome horibble]}",
+    review = Review.new(content: "This restaurant is #{%w[good bad awesome horibble].sample}",
                rating: [1, 2, 3, 4, 5].sample)
     review.restaurant = restaurant
     review.save

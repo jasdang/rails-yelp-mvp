@@ -1,0 +1,4 @@
+<h3>Restaurant Listing</h3>
+<% @restaurants.each do |restaurant| %>
+  <p><%= link_to "#{restaurant.name.capitalize}", restaurant_path(restaurant) %></p>
+<% end %>
