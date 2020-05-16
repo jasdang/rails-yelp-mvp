@@ -10,14 +10,27 @@ Restaurant.destroy_all
 
 puts "Start seeding"
 
-count = 1
+restaurant_count = 1
 
 10.times do
-  Restaurant.create!(name: "restaurant #{count}",
-                     address: "#{count} Orchard Road",
+  restaurant = Restaurant.create!(name: "restaurant #{restaurant_count}",
+                     address: "#{restaurant_count} Orchard Road",
                      category: %w[chinese italian japanese french belgian].sample,
                      phone_number: "1234 1234"
                     )
-  count += 1
+
+  puts "Seed restaurant ##{restaurant_count}"
+
+  review_count = 1
+  3.times do
+    review = Review.new(content: "This restaurant is #{%w[good bad awesome horibble]}",
+               rating: [1, 2, 3, 4, 5].sample)
+    review.restaurant = restaurant
+    review.save
+    puts "Seed review ##{review_count}"
+    review_count += 1
+  end
+  restaurant_count += 1
 end
-puts "Created #{count - 1} restaurants!"
+
+puts "Created #{restaurant_count - 1} restaurants!"
